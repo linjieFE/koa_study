@@ -1,1 +1,20 @@
 <h1><%- title%></h1>
+<!-- 
+    三、demo
+    下面我们在页面中加一个导航，旁边加一个“添加”铵钮，往内容中添加数据内容
+    1）step1 在app.js 引入一个 DB 
+ -->
+ <ul class="list-group">
+     <!-- 处理逻辑函数不用加逻辑符号 -->
+    <% things.forEach(thing =>{ %>
+     <li class="list-group-item">
+        <strong><ins>cust</ins></strong> :  <%= thing.name%>
+     </li>
+     <li class="list-group-item">
+        <strong><mark>job</mark></strong> :  <%= thing.job%>
+    </li>
+    <li class="list-group-item">
+        <strong>hobby</strong> :  <%= thing.hobby%>
+    </li>
+    <% }) %>
+ </ul>

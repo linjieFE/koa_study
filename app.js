@@ -15,6 +15,12 @@ const app = new Koa();
 const router = new KoaRouter()
 app.use(json());//格式化json
 
+//step 9 引入一个DB 这里先mock
+// const things = ["my family", "programming", "music"]
+const things = [
+    {name:"my family",job:"programming",hobby:"music"}
+]
+
 //step5 
 router.get("/test", ctx=> ctx.body = "hello Router")//localhost:3000/test =>显示 hello Router!
 router.get("/add", ctx=> ctx.body = "hello add!")//localhost:3000/add =>显示 hello add!
@@ -37,7 +43,9 @@ render(app,{
 // 路上跳转index '/'目录会自动跟踪指向目录的index.html 所以这里还要在views文件夹个建立一个index.html
 router.get ('/',async ctx =>{
     await ctx.render("index",{
-        title:"thisng I love..."//传值，可传可不传 ，一般用来传数据.在本例中 不传值layou body会自动载入 index.html内容 传会显示 对象中所传的 title值
+        title:"Hello Koa...",//传值，可传可不传 ，一般用来传数据.在本例中 不传值layou body会自动载入 index.html内容 传会显示 对象中所传的 title值
+        //step 10
+        things:things
     })
 })
 // step4 配置路由模块
