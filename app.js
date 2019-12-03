@@ -1,6 +1,7 @@
 //一、起步
 const Koa=require('koa')//引入koa
 const json=require('koa-json')//引入koa-json
+const bodyParser = require('koa-bodyparser')//step13 5-3引入koa-bodyparser
 //step2
 const KoaRouter=require('koa-router')//引入koa-router
 
@@ -14,6 +15,9 @@ const app = new Koa();
 //step3 实例化koa-router
 const router = new KoaRouter()
 app.use(json());//格式化json
+
+app.use(bodyParser())//step13 5-4 
+
 
 //step 10 引入一个DB 这里先mock
 // const things = ["my family", "programming", "music"]
@@ -65,6 +69,28 @@ async function showAdd(ctx){
         info:'add page'
     })
 }
+
+//step13 5-1 添加路由方法 
+/**
+ * 用koa写一个接口
+ * 1）当点添加时，写一个post请求
+ *  */
+//step13 5-1
+router.post("/add", add)
+
+async function add(ctx){
+    // await ctx.render('add')
+    const body= ctx.request.body
+    console.log(body)//=>step13 5-5 回到页面中输入内容 点击添加后 页面显示Not Found 终端打印出 { thing: '1212' } body.thing='1212'
+    things.push({name:body.thing,job:'codeMonkey',hobby:'write bug'});
+    ctx.redirect('/')//=>step13 5-6 完成后跳到主页
+}
+//step13 5-2 
+/**
+ * 1）input发送后 koa服务需要拿到前端传过来的数据
+ * 2）需要安装 koa-bodyparser 来接收前端传来的数据 cnpm install koa-bodyparser
+ * 3) 顶部引入 koa-bodyparser 再.use(bodyParser)
+ */
 
 
 // step4 配置路由模块
