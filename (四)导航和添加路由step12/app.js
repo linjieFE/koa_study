@@ -61,10 +61,9 @@ router.get("/add", showAdd)
  *   3) 在layout.html中用ejs模板语言 把导航include引用进来
 */ 
 async function showAdd(ctx){
-    await ctx.render('add',{
-        info:'add page'
-    })
+    await ctx.render('add')
 }
+//step13 5-1 添加路由方法
 
 
 // step4 配置路由模块
