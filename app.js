@@ -18,7 +18,13 @@ app.use(json());//格式化json
 
 app.use(bodyParser())//step13 5-4 
 
-
+//step14 给上下文context 添加属性
+/**
+ * 1）定义一个 user 属性
+ * 2）在第34行/test 引用 ${ctx.user} 
+ * 3) 传参
+ */
+app.context.user="前端林姐姐"
 //step 10 引入一个DB 这里先mock
 // const things = ["my family", "programming", "music"]
 const things = [
@@ -26,7 +32,8 @@ const things = [
 ]
 
 //step5 
-router.get("/test", ctx=> ctx.body = "hello Router")//localhost:3000/test =>显示 hello Router!
+router.get("/test", ctx=> ctx.body = `hello ${ctx.user}`)//localhost:3000/test =>显示 hello!
+router.get("/test2/:id", ctx=> ctx.body = `传递的参数是： ${ctx.params.id}`)//localhost:3000/test2 =>显示 传递的参数是： undefined
 // router.get("/add", ctx=> ctx.body = "hello add!")//localhost:3000/add =>显示 hello add!
 
 //step6 安装一个模板引擎ejs 渲染一个html页面 demo 
