@@ -1,0 +1,23 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linjieFE/koa_study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linjieFE/koa_study/issues"
+  },
+  "homepage": "https://github.com/linjieFE/koa_study#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
