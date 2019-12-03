@@ -44,7 +44,7 @@ render(app,{
 router.get ('/',async ctx =>{
     await ctx.render("index",{
         title:"Hello Koa...",//传值，可传可不传 ，一般用来传数据.在本例中 不传值layou body会自动载入 index.html内容 传会显示 对象中所传的 title值
-        //step 11
+        //step 11 传载数据
         things:things
     })
 })
